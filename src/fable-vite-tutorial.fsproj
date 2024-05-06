@@ -5,7 +5,7 @@
     <RootNamespace>fable_vite_tutorial</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="App/Types.fs" />
+    <Compile Include="Types.fs" />
     <Compile Include="App/Counter.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>

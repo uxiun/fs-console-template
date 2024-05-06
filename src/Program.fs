@@ -13,11 +13,13 @@ let update (msg: Types.Msg) (state: State) : State =
         Count = Counter.upd msg.Counter state.Count }
 
 let render (state: State) (dispatch: Types.Msg -> unit) : ReactElement =
-    Html.div [ Html.h1 "Fable Vite Template"; Counter.render state.Count dispatch ]
+    Html.div
+        [ Html.h1 "Elmish Vite Template with src/"
+          Counter.render state.Count dispatch ]
 
 
 
 
 Program.mkSimple init update render
-|> Program.withReactSynchronous "root"
+|> Program.withReactSynchronous "elmish"
 |> Program.run
