@@ -1,0 +1,26 @@
+{
+	"name": "fable-vite-tutorial",
+	"version": "1.0.0",
+	"description": "",
+	"main": "Program.fs.js",
+	"type": "module",
+	"scripts": {
+		"start": "vite",
+		"dev": "dotnet fable --lang ts watch --run vite",
+		"fable": "dotnet fable --lang ts watch",
+		"tsc": "tsc"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@types/node": "^20.12.9",
+		"typescript": "^5.4.5",
+		"vite": "^5.2.11"
+	},
+	"dependencies": {
+		"@types/react": "^18.3.1",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1"
+	}
+}
