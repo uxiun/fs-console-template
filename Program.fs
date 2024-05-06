@@ -5,8 +5,19 @@ open Feliz
 open Elmish
 open Elmish.React
 
-let header = Html.h1 "Fable Vite Template"
+type State = { Count: int }
+let init () = { Count = Counter.init () }
 
-Program.mkSimple (fun _ -> ()) (fun _ _ -> ()) (fun _ _ -> header)
+let update (msg: Types.Msg) (state: State) : State =
+    { state with
+        Count = Counter.upd msg.Counter state.Count }
+
+let render (state: State) (dispatch: Types.Msg -> unit) : ReactElement =
+    Html.div [ Html.h1 "Fable Vite Template"; Counter.render state.Count dispatch ]
+
+
+
+
+Program.mkSimple init update render
 |> Program.withReactSynchronous "root"
 |> Program.run

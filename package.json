@@ -6,8 +6,8 @@
 	"type": "module",
 	"scripts": {
 		"start": "vite",
-		"dev": "dotnet fable --lang ts watch --run vite",
-		"fable": "dotnet fable --lang ts watch",
+		"dev": "dotnet fable watch --lang ts --run vite",
+		"fable": "dotnet fable watch --lang ts",
 		"tsc": "tsc"
 	},
 	"keywords": [],
