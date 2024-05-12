@@ -28,25 +28,6 @@ let private button (msg: Msg) (dispatch: Msg -> unit) : ReactElement =
     prop.onClick (fun _ -> dispatch msg)
   ]
 
-let render (state: State) (dispatch: Msg -> unit) =
-  Html.div [
-    prop.style [
-      style.backgroundColor "salmon"
-      style.borderRadius 3
-      style.padding (length.em 1)
-    ]
-
-    prop.children (
-      Html.h1 $"Count: {state}"
-      :: ([
-            Increment
-            Decrement
-          ]
-          |> List.map (fun msg -> button msg dispatch))
-    )
-
-  ]
-
 let update (msg: Msg) (state: State) : State =
   match msg with
   | Increment -> state + 1
@@ -55,7 +36,23 @@ let update (msg: Msg) (state: State) : State =
 let render (state: State) (dispatch: Msg -> unit) : ReactElement =
   Html.div [
     Html.h1 "Elmish Vite Template"
-    render state dispatch
+    Html.div [
+      prop.style [
+        style.backgroundColor "salmon"
+        style.borderRadius 3
+        style.padding (length.em 1)
+      ]
+
+      prop.children (
+        Html.h1 $"Count: {state}"
+        :: ([
+              Increment
+              Decrement
+            ]
+            |> List.map (fun msg -> button msg dispatch))
+      )
+
+    ]
   ]
 
 Program.mkSimple init update render
