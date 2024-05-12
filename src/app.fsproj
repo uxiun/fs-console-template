@@ -4,6 +4,8 @@
     <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="lib/Util.fs" />
+    <Compile Include="lib/ElmishHelper.fs" />
     <Compile Include="App.fs" />
   </ItemGroup>
   <ItemGroup>
