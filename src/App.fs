@@ -1,19 +1,62 @@
-﻿// For more information see https://aka.ms/fsharp-console-apps
-
-open Feliz
+﻿open Feliz
 open Elmish
 open Elmish.React
 
-type State = { Count: int }
-let init () = { Count = Counter.init () }
+type Msg =
+  | Increment
+  | Decrement
 
-let update (msg: Types.Msg) (state: State) : State =
-    { state with
-        Count = Counter.upd msg.Counter state.Count }
+type State = int
+let init () = 0
 
-let render (state: State) (dispatch: Types.Msg -> unit) : ReactElement =
-    Html.div [ Html.h1 "Elmish Vite Template"; Counter.render state.Count dispatch ]
+let private button (msg: Msg) (dispatch: Msg -> unit) : ReactElement =
+  let text =
+    match msg with
+    | Increment -> "+"
+    | Decrement -> "-"
+    + "1"
 
+  Html.button [
+    prop.style [
+      style.backgroundColor "white"
+      style.fontSize (length.em 3)
+      style.width (length.em 2)
+      style.height (length.em 2)
+      style.borderRadius (length.percent 22)
+    ]
+    prop.text text
+    prop.onClick (fun _ -> dispatch msg)
+  ]
+
+let render (state: State) (dispatch: Msg -> unit) =
+  Html.div [
+    prop.style [
+      style.backgroundColor "salmon"
+      style.borderRadius 3
+      style.padding (length.em 1)
+    ]
+
+    prop.children (
+      Html.h1 $"Count: {state}"
+      :: ([
+            Increment
+            Decrement
+          ]
+          |> List.map (fun msg -> button msg dispatch))
+    )
+
+  ]
+
+let update (msg: Msg) (state: State) : State =
+  match msg with
+  | Increment -> state + 1
+  | Decrement -> state - 1
+
+let render (state: State) (dispatch: Msg -> unit) : ReactElement =
+  Html.div [
+    Html.h1 "Elmish Vite Template"
+    render state dispatch
+  ]
 
 Program.mkSimple init update render
 |> Program.withReactSynchronous "elmish"
