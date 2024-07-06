@@ -1,5 +1,5 @@
 {
-	"name": "fable-vite-tutorial",
+	"name": "elmish-vite",
 	"version": "1.0.0",
 	"description": "",
 	"main": "Program.fs.js",
