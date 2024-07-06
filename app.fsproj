@@ -8,5 +8,8 @@
     <Compile Include="lib/Util.fs" />
     <Compile Include="App.fs" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="FSharp.Core" Version="8.0.300" />
+  </ItemGroup>
   <Import Project=".paket\Paket.Restore.targets" />
 </Project>
